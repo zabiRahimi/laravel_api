@@ -22,7 +22,11 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => 1,
+            'title' => $this->faker->title,
+            'body' => $this->faker->text,
+            'price' => $this->faker->numberBetween(5000, 60000),
+            'image' => 'dfg12sfg',
         ];
     }
 }
