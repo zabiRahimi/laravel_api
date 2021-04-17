@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Monolog\Handler\RotatingFileHandler;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,10 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\v1')->group(function(){
  
     //get singlePage data
   Route::get('/courses/{course}','CourseController@single');
+
+  Route::post('/login','UserController@login');
+  Route::post('/register','UserController@register');
+
+  
  });
 

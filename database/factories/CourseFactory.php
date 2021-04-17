@@ -19,14 +19,17 @@ class CourseFactory extends Factory
      *
      * @return array
      */
+
     public function definition()
     {
+    $faker = \Faker\Factory::create('fa_IR'); 
+
         return [
             'user_id' => 1,
             'title' => $this->faker->title,
-            'body' => $this->faker->text,
+            'body' => $this->faker->paragraph,
             'price' => $this->faker->numberBetween(5000, 60000),
-            'image' => 'dfg12sfg',
+            'image' => 'dfg12sfgzzz',
         ];
     }
 }
