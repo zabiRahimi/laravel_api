@@ -16,9 +16,9 @@ use Monolog\Handler\RotatingFileHandler;
 */
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::prefix('v1')->namespace('App\Http\Controllers\Api\v1')->group(function(){
 
@@ -30,7 +30,14 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\v1')->group(function(){
 
   Route::post('/login','UserController@login');
   Route::post('/register','UserController@register');
-
+  // Route::get('/user',function(){
+  //   return 'ok';
+  // });
+  Route::middleware('auth:api')->group(function(){
+    Route::get('/user',function(){
+      return 'okw';
+    });
+  });
   
  });
 
