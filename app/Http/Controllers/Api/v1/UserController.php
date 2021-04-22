@@ -8,11 +8,17 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
     public function login(Request $request)
     {
+        // $user = User::find(1);
+        // $user->update([
+        //     'email' => 'rahimi.z1360@gmail.com',
+        //     'password' => bcrypt('zabi1360')
+        // ]);
         #validate
        $val= $this->validate($request ,[
             'email'=> 'required|email|exists:users',
@@ -20,6 +26,7 @@ class UserController extends Controller
         ]);
         // $user = User::find(1);
         // $user->update([
+        //     'rahimi.z1360@gmail.com',
         //     'password' => bcrypt('zabi1360')
         // ]);
         // متد اَتمپت هم چک می کند که آیا کاربر لاگین کرده یا نه ، و هم اگر اطلاعات وارد شده صحیح باشد، کاربر را لاگین می کند
@@ -30,7 +37,14 @@ class UserController extends Controller
                 'status' =>'error'
             ],403);
         }
-
+        //چنانچه بخواهیم کاربر فقط بتواند با یک دیوایس احراز هویت کند از دستور زیر استفاده می کنیم
+        // auth()->user()->update([
+        //     'api_token'=> Str::random(100)
+        // ]);
+        User::find(auth()->user()->id)->update(
+            [
+                'api_token'=> Str::random(100)
+            ]);
         // چون از متد اَتمپت برای چک کردن اطلاعات استفاده کردیم، در صورت صحیح بودن اطلاعات توسط دستور زیر اطالاعات کاربر لگین شده را دریافت می کنیم.
         // return auth()->user();
 

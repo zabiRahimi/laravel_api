@@ -35,7 +35,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\v1')->group(function(){
   // });
   Route::middleware('auth:api')->group(function(){
     Route::get('/user',function(){
-      return 'okw';
+      return auth()->user();
     });
   });
   
