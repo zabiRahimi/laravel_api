@@ -41,10 +41,10 @@ class UserController extends Controller
         // auth()->user()->update([
         //     'api_token'=> Str::random(100)
         // ]);
-        User::find(auth()->user()->id)->update(
-            [
-                'api_token'=> Str::random(100)
-            ]);
+        // User::find(auth()->user()->id)->update(
+        //     [
+        //         'api_token'=> Str::random(100)
+        //     ]);
         // چون از متد اَتمپت برای چک کردن اطلاعات استفاده کردیم، در صورت صحیح بودن اطلاعات توسط دستور زیر اطالاعات کاربر لگین شده را دریافت می کنیم.
         // return auth()->user();
 
