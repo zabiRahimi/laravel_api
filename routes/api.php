@@ -30,12 +30,22 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\v1')->group(function(){
 
   Route::post('/login','UserController@login');
   Route::post('/register','UserController@register');
+
+  Route::post('/loginAdmin','AdminController@login');
+  Route::post('/registerAdmin','AdminController@register');
   // Route::get('/user',function(){
   //   return 'ok';
   // });
   Route::middleware('auth:api')->group(function(){
     Route::get('/user',function(){
       return auth()->user();
+    });
+  });
+
+  Route::middleware('auth:admin-api')->group(function(){
+    // Route::get('/zabi','ZabiController@zabi');
+    Route::get('/zabi',function(){
+      return auth()->guard('admin-api')->user();
     });
   });
   

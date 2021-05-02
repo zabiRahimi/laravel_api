@@ -61,10 +61,8 @@ class UserController extends Controller
         $user=User::create([
             'name' => $val['name'],
             'email' => $val['email'],
-
             'password' => bcrypt($val['password']),
-
-
+            'api_token' => 'zabi'. Str::random(100),
         ]);
         return new UserResource($user);
     }
