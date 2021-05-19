@@ -24,4 +24,8 @@ class Admin extends Authenticatable
         'remember_token',
         'api_token',
     ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

@@ -33,6 +33,10 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\v1')->group(function(){
 
   Route::post('/loginAdmin','AdminController@login');
   Route::post('/registerAdmin','AdminController@register');
+
+  Route::get('passwordAdmin/reset/{token}', 'ResetPasswordAPIController@showResetForm');
+  Route::post('passwordAdmin/reset', 'AdminResetPasswordController@reset');
+  Route::post('passwordAdmin/email', 'AdminForgotPasswordController@sendResetLinkEmail');
   // Route::get('/user',function(){
   //   return 'ok';
   // });
